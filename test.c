@@ -16,3 +16,9 @@ int main() {
 
     return 0;
 }
+
+// dio cane, mi gira il cazzo! Oggi ho pure voglia di morire : ) 
+// Detto questo tu come stai?
+// Bene, grazie della domanda!
+// Prego a differenza tua io non sono maleducato e ringrazio.
+// Sparati tipo questa cosa sta degenrando!
