@@ -6,13 +6,13 @@
 /*   By: dwilun <dwilun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 11:23:54 by dwilun            #+#    #+#             */
-/*   Updated: 2023/11/19 11:41:48 by dwilun           ###   ########.fr       */
+/*   Updated: 2023/11/19 11:45:54 by dwilun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-
+/*
 char *get_next_line(int fd);
 
 int main()
@@ -28,6 +28,7 @@ int main()
 	   printf("%s", line);
     }
 }
+*/
 
 /*
 char	*ft_freecontent(char *fcontent)
@@ -175,6 +176,8 @@ char	*get_next_line(int fd)
 		if (!fcontent)
 			return (NULL);
 	}
+	free(buffer);
+	buffer = NULL;
 	line = ft_extractline(fcontent);
 	if (!line)
 		return (NULL);
