@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dwilun <dwilun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 11:23:54 by dwilun            #+#    #+#             */
-/*   Updated: 2023/11/25 11:52:25 by dwilun           ###   ########.fr       */
+/*   Updated: 2023/11/25 11:51:58 by dwilun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_freecontent(char *fcontent)
 {
@@ -93,7 +93,7 @@ char	*ft_readline(int fd, char *buffer, char *fcontent)
 
 char	*get_next_line(int fd)
 {
-	static char	*fcontent;
+	static char	*fcontent[4096];
 	char		*buffer;
 	char		*line;
 
@@ -102,16 +102,16 @@ char	*get_next_line(int fd)
 	buffer = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buffer)
 		return (NULL);
-	if (ft_strchr(fcontent, '\n') == NULL)
-		fcontent = ft_readline(fd, buffer, fcontent);
+	if (ft_strchr(fcontent[fd], '\n') == NULL)
+		fcontent[fd] = ft_readline(fd, buffer, fcontent[fd]);
 	free(buffer);
-	line = ft_extractline(fcontent);
+	line = ft_extractline(fcontent[fd]);
 	if (!line)
 	{
-		free(fcontent);
-		fcontent = NULL;
+		free(fcontent[fd]);
+		fcontent[fd] = NULL;
 		return (NULL);
 	}
-	fcontent = ft_freecontent(fcontent);
+	fcontent[fd] = ft_freecontent(fcontent[fd]);
 	return (line);
 }
